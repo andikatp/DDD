@@ -1,5 +1,6 @@
-import 'package:ddd_raja/presentation/location/screens/location_page.dart';
+import 'package:ddd_raja/presentation/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,12 +14,7 @@ class HomePage extends StatelessWidget {
           children: [
             const Text('Go To Next Page'),
             ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute<LocationPage>(
-                  builder: (context) => const LocationPage(),
-                ),
-              ),
+              onPressed: () => context.pushNamed(Routes.location),
               child: const Text('Next Page'),
             ),
           ],
