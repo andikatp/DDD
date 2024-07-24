@@ -10,8 +10,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'location_repository.g.dart';
 
 class LocationRepository extends LocationInterface {
-  final Dio _dio;
   LocationRepository(this._dio);
+  final Dio _dio;
 
   @override
   Future<Either<String, LocationReq>> getAllLocationFromRajaOngkir() async {
@@ -19,7 +19,7 @@ class LocationRepository extends LocationInterface {
       final response = await _dio.get(
           'https://api.rajaongkir.com/starter/province',
           options:
-              Options(headers: {"key": ""}));
+              Options(headers: {'key': ''}),);
       final result = response.data['rajaongkir'];
       final data = LocationReq.fromJson(result);
       return Right(data);
@@ -32,9 +32,9 @@ class LocationRepository extends LocationInterface {
   Future<Either<String, CityReq>> getCity(String id) async {
     try {
       final response = await _dio.get('https://api.rajaongkir.com/starter/city',
-          queryParameters: {"province": id},
+          queryParameters: {'province': id},
           options:
-              Options(headers: {"key": ""}));
+              Options(headers: {'key': ''}),);
       final result = response.data['rajaongkir'];
       final data = CityReq.fromJson(result);
       return Right(data);
@@ -49,13 +49,13 @@ class LocationRepository extends LocationInterface {
       final response = await _dio.post(
           'https://api.rajaongkir.com/starter/cost',
           data: {
-            "origin": idFrom,
-            "destination": idTo,
-            "weight": 1000,
-            "courier": "jne"
+            'origin': idFrom,
+            'destination': idTo,
+            'weight': 1000,
+            'courier': 'jne',
           },
           options:
-              Options(headers: {"key": ""}));
+              Options(headers: {'key': ''}),);
       final result =
           response.data['rajaongkir']['results'][0]['costs'][0]['cost'][0];
       print(result);
