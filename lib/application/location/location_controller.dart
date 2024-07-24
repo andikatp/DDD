@@ -1,4 +1,5 @@
 import 'package:ddd_raja/application/location/location_state.dart';
+import 'package:ddd_raja/domain/core/failures.dart';
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:ddd_raja/domain/location/interface/location_interface.dart';
 import 'package:ddd_raja/insfratucture/location/location_repository.dart';
@@ -21,9 +22,12 @@ class LocationController extends _$LocationController {
     state = state.copyWith(locationFailureOrSuccess: none());
     final data = await _interface.getAllLocationFromRajaOngkir();
     data.fold(
-      (l) => state = state.copyWith(locationFailureOrSuccess: some(Left(l))),
+      (l) => state =
+          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
       (r) => state = state.copyWith(
-          provinceData: r, locationFailureOrSuccess: some(const Right(unit)),),
+        provinceData: r,
+        locationFailureOrSuccess: some(const Right(unit)),
+      ),
     );
   }
 
@@ -31,7 +35,8 @@ class LocationController extends _$LocationController {
     state = state.copyWith(cityData: const CityReq(results: []));
     final data = await _interface.getCity(id);
     data.fold(
-      (l) => state = state.copyWith(locationFailureOrSuccess: some(Left(l))),
+      (l) => state =
+          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
       (r) => state = state.copyWith(
         cityData: r,
         locationFailureOrSuccess: some(const Right(unit)),
@@ -43,7 +48,8 @@ class LocationController extends _$LocationController {
     state = state.copyWith(price: 0);
     final data = await _interface.getPrice(idFrom, idTo);
     data.fold(
-      (l) => state = state.copyWith(locationFailureOrSuccess: some(Left(l))),
+      (l) => state =
+          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
       (r) => state = state.copyWith(
         price: r.value,
         locationFailureOrSuccess: some(const Right(unit)),
