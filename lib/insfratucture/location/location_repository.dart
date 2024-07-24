@@ -16,11 +16,12 @@ class LocationRepository extends LocationInterface {
   @override
   Future<Either<String, LocationReq>> getAllLocationFromRajaOngkir() async {
     try {
-      final response = await _dio.get(
-          'https://api.rajaongkir.com/starter/province',
-          options:
-              Options(headers: {'key': ''}),);
-      final result = response.data['rajaongkir'];
+      final response = await _dio.get<dynamic>(
+        'https://api.rajaongkir.com/starter/province',
+        options: Options(headers: {'key': ''}),
+      );
+      final result = (response.data as Map<String, dynamic>)['rajaongkir']
+          as Map<String, dynamic>;
       final data = LocationReq.fromJson(result);
       return Right(data);
     } catch (e) {
@@ -31,11 +32,13 @@ class LocationRepository extends LocationInterface {
   @override
   Future<Either<String, CityReq>> getCity(String id) async {
     try {
-      final response = await _dio.get('https://api.rajaongkir.com/starter/city',
-          queryParameters: {'province': id},
-          options:
-              Options(headers: {'key': ''}),);
-      final result = response.data['rajaongkir'];
+      final response = await _dio.get<dynamic>(
+        'https://api.rajaongkir.com/starter/city',
+        queryParameters: {'province': id},
+        options: Options(headers: {'key': ''}),
+      );
+      final result = (response.data as Map<String, dynamic>)['rajaongkir']
+          as Map<String, dynamic>;
       final data = CityReq.fromJson(result);
       return Right(data);
     } catch (e) {
@@ -46,24 +49,24 @@ class LocationRepository extends LocationInterface {
   @override
   Future<Either<String, PriceReq>> getPrice(String idFrom, String idTo) async {
     try {
-      final response = await _dio.post(
-          'https://api.rajaongkir.com/starter/cost',
-          data: {
-            'origin': idFrom,
-            'destination': idTo,
-            'weight': 1000,
-            'courier': 'jne',
-          },
-          options:
-              Options(headers: {'key': ''}),);
-      final result =
-          response.data['rajaongkir']['results'][0]['costs'][0]['cost'][0];
-      print(result);
+      final response = await _dio.post<dynamic>(
+        'https://api.rajaongkir.com/starter/cost',
+        data: {
+          'origin': idFrom,
+          'destination': idTo,
+          'weight': 1000,
+          'courier': 'jne',
+        },
+        options: Options(headers: {'key': ''}),
+      );
+      final result = (((((response.data as Map<String, dynamic>)['rajaongkir']
+                      as Map<String, dynamic>)['results']
+                  as List<Map<String, dynamic>>)[0]['costs']
+              as List<Map<String, dynamic>>)[0]['cost']
+          as List<Map<String, dynamic>>)[0];
       final data = PriceReq.fromJson(result);
       return Right(data);
-    } catch (e, s) {
-      print(s);
-      print(e);
+    } catch (e) {
       return Left(e.toString());
     }
   }

@@ -4,9 +4,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// I employ these extensions to enhance code comprehension through GitHub projects.
-extension LoggerExtension on AutoDisposeRef {
-  /// logs the lifecycle
+extension LoggerExtension on AutoDisposeRef<dynamic> {
   void logger() {
     log('init', name: 'logger');
     onCancel(() => log('onCancel (Abort!)', name: 'logger'));
@@ -27,16 +25,16 @@ extension LoggerExtension on AutoDisposeRef {
   }
 }
 
-extension CancelTokenExtension on AutoDisposeRef {
+extension CancelTokenExtension on AutoDisposeRef<dynamic> {
   /// creates a token to cancel API requests
   CancelToken cancelToken() {
-    var token = CancelToken();
+    final token = CancelToken();
     onCancel(token.cancel);
     return token;
   }
 }
 
-extension CacheExtension on AutoDisposeRef {
+extension CacheExtension on AutoDisposeRef<dynamic> {
   KeepAliveLink cacheFor([Duration duration = const Duration(seconds: 3)]) {
     Timer? timer;
     // prevents being disposed
@@ -71,7 +69,8 @@ extension DebounceExtension on Ref {
     final completer = Completer<void>();
 
     /// creates a timer with the given duration
-    /// when the time expires, and the completer hasn't completed yet, complete it.
+    /// when the time expires, and the completer hasn't completed yet,
+    /// complete it.
     /// and the debounce function lets the rest of the code executed
     final timer = Timer(duration, () {
       if (!completer.isCompleted) completer.complete();

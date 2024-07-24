@@ -1,6 +1,8 @@
 analyzer:
   errors:
+    avoid_final_parameters: ignore
     invalid_annotation_target: ignore
+    use_setters_to_change_properties: ignore
   plugins:
     - custom_lint
 

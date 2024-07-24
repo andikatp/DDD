@@ -11,14 +11,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Go To Next Page'),
+            const Text('Go To Next Page'),
             ElevatedButton(
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LocationPage(),
-                    )),
-                child: Text('Next Page'))
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute<LocationPage>(
+                  builder: (context) => const LocationPage(),
+                ),
+              ),
+              child: const Text('Next Page'),
+            ),
           ],
         ),
       ),
