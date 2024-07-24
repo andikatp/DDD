@@ -1,5 +1,5 @@
 import 'package:ddd_raja/application/location/location_controller.dart';
-import 'package:ddd_raja/presentation/widgets/location/dropdown_location.dart';
+import 'package:ddd_raja/presentation/location/widgets/dropdown_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
