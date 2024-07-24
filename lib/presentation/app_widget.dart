@@ -1,4 +1,4 @@
-import 'package:ddd_raja/presentation/screens/home/home_page.dart';
+import 'package:ddd_raja/presentation/home/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
