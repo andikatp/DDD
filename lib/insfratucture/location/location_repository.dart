@@ -24,8 +24,8 @@ class LocationRepository extends LocationInterface {
           as Map<String, dynamic>;
       final data = LocationReq.fromJson(result);
       return Right(data);
-    } catch (e) {
-      return Left(e.toString());
+    } on DioException catch (e) {
+      return Left(e.message ?? 'Error ');
     }
   }
 
@@ -41,8 +41,8 @@ class LocationRepository extends LocationInterface {
           as Map<String, dynamic>;
       final data = CityReq.fromJson(result);
       return Right(data);
-    } catch (e) {
-      return Left(e.toString());
+    } on DioException catch (e) {
+      return Left(e.message ?? 'Error ');
     }
   }
 
@@ -70,8 +70,8 @@ class LocationRepository extends LocationInterface {
       final costReorder = cost.map((e) => e as Map<String, dynamic>).toList();
       final data = PriceReq.fromJson(costReorder[0]);
       return Right(data);
-    } catch (e) {
-      return Left(e.toString());
+    } on DioException catch (e) {
+      return Left(e.message ?? 'Error ');
     }
   }
 }
