@@ -49,5 +49,6 @@ class LocationController extends _$LocationController {
         locationFailureOrSuccess: some(const Right(unit)),
       ),
     );
+    print(data);
   }
 }

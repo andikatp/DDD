@@ -59,12 +59,16 @@ class LocationRepository extends LocationInterface {
         },
         options: Options(headers: {'key': ''}),
       );
-      final result = (((((response.data as Map<String, dynamic>)['rajaongkir']
-                      as Map<String, dynamic>)['results']
-                  as List<Map<String, dynamic>>)[0]['costs']
-              as List<Map<String, dynamic>>)[0]['cost']
-          as List<Map<String, dynamic>>)[0];
-      final data = PriceReq.fromJson(result);
+      final rajaOngkir = (response.data as Map<String, dynamic>)['rajaongkir'];
+      final result =
+          (rajaOngkir as Map<String, dynamic>)['results'] as List<dynamic>;
+      final resultsReorder =
+          result.map((e) => e as Map<String, dynamic>).toList();
+      final costs = resultsReorder[0]['costs'] as List<dynamic>;
+      final costsReorder = costs.map((e) => e as Map<String, dynamic>).toList();
+      final cost = costsReorder[0]['cost'] as List<dynamic>;
+      final costReorder = cost.map((e) => e as Map<String, dynamic>).toList();
+      final data = PriceReq.fromJson(costReorder[0]);
       return Right(data);
     } catch (e) {
       return Left(e.toString());
