@@ -1,4 +1,4 @@
-import 'package:ddd_raja/presentation/screens/location/location_page.dart';
+import 'package:ddd_raja/presentation/location/screens/location_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
