@@ -1,3 +1,5 @@
+import 'package:ddd_raja/domain/core/exceptions.dart';
+import 'package:ddd_raja/domain/core/failures.dart';
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:ddd_raja/domain/location/entites/location_req.dart';
 import 'package:ddd_raja/domain/location/entites/price_req.dart';
@@ -14,7 +16,7 @@ class LocationRepository extends LocationInterface {
   final Dio _dio;
 
   @override
-  Future<Either<String, LocationReq>> getAllLocationFromRajaOngkir() async {
+  Future<Either<Failure, LocationReq>> getAllLocationFromRajaOngkir() async {
     try {
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/province',
@@ -25,12 +27,13 @@ class LocationRepository extends LocationInterface {
       final data = LocationReq.fromJson(result);
       return Right(data);
     } on DioException catch (e) {
-      return Left(e.message ?? 'Error ');
+      final exception = ServerException(message: e.message ?? 'Error');
+      return Left(Failure.serverFailureFromException(exception));
     }
   }
 
   @override
-  Future<Either<String, CityReq>> getCity(String id) async {
+  Future<Either<Failure, CityReq>> getCity(String id) async {
     try {
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/city',
@@ -42,12 +45,16 @@ class LocationRepository extends LocationInterface {
       final data = CityReq.fromJson(result);
       return Right(data);
     } on DioException catch (e) {
-      return Left(e.message ?? 'Error ');
+      final exception = ServerException(message: e.message ?? 'Error');
+      return Left(Failure.serverFailureFromException(exception));
     }
   }
 
   @override
-  Future<Either<String, PriceReq>> getPrice(String idFrom, String idTo) async {
+  Future<Either<Failure, PriceReq>> getPrice(
+    String idFrom,
+    String idTo,
+  ) async {
     try {
       final response = await _dio.post<dynamic>(
         'https://api.rajaongkir.com/starter/cost',
@@ -71,7 +78,8 @@ class LocationRepository extends LocationInterface {
       final data = PriceReq.fromJson(costReorder[0]);
       return Right(data);
     } on DioException catch (e) {
-      return Left(e.message ?? 'Error ');
+      final exception = ServerException(message: e.message ?? 'Error');
+      return Left(Failure.serverFailureFromException(exception));
     }
   }
 }
