@@ -3,14 +3,14 @@ import 'package:ddd_raja/presentation/widgets/location/select_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LocationPage extends ConsumerStatefulWidget {
-  const LocationPage({super.key});
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _LocationPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
 }
 
-class _LocationPageState extends ConsumerState<LocationPage> {
+class _HomePageState extends ConsumerState<HomePage> {
   String? idKota1;
   String? idKota2;
   bool _isLoading = false;
@@ -41,33 +41,29 @@ class _LocationPageState extends ConsumerState<LocationPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProviderScope(
-                overrides: [locationControllerProvider],
-                child: SelectLocation(
-                  funGetCity: getIdKota1,
-                  title: 'From',
-                ),
-              ),
+                  overrides: [locationControllerProvider],
+                  child: SelectLocation(
+                    funGetCity: getIdKota1,
+                    title: 'From',
+                  ),),
               const SizedBox(height: 20),
               ProviderScope(
-                overrides: [locationControllerProvider],
-                child: SelectLocation(
-                  funGetCity: getIdKota2,
-                  title: 'To',
-                  showLoading: true,
-                ),
-              ),
+                  overrides: [locationControllerProvider],
+                  child: SelectLocation(
+                    funGetCity: getIdKota2,
+                    title: 'To',
+                    showLoading: true,
+                  ),),
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: _isLoading ? null : calculate,
-                child: Text(
-                  locationState.price == 0
-                      ? _isLoading
-                          ? 'Loading...'
-                          : 'Hitung'
-                      : _isLoading
-                          ? 'Loading...'
-                          : '${locationState.price}',
-                ),
+                child: Text(locationState.price == 0
+                    ? _isLoading
+                        ? 'Loading...'
+                        : 'Hitung'
+                    : _isLoading
+                        ? 'Loading...'
+                        : '${locationState.price}',),
               ),
             ],
           ),

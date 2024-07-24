@@ -1,7 +1,7 @@
+import 'package:ddd_raja/application/location/location_state.dart';
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:ddd_raja/domain/location/interface/location_interface.dart';
 import 'package:ddd_raja/insfratucture/location/location_repository.dart';
-import 'package:ddd_raja/application/location/location_state.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,7 +23,7 @@ class LocationController extends _$LocationController {
     data.fold(
       (l) => state = state.copyWith(locationFailureOrSuccess: some(Left(l))),
       (r) => state = state.copyWith(
-          provinceData: r, locationFailureOrSuccess: some(const Right(unit))),
+          provinceData: r, locationFailureOrSuccess: some(const Right(unit)),),
     );
   }
 

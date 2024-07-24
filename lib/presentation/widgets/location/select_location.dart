@@ -11,7 +11,7 @@ class SelectLocation extends ConsumerStatefulWidget {
     super.key,
   });
 
-  final Function(String) funGetCity;
+  final void Function(String) funGetCity;
   final String title;
   final bool showLoading;
 
@@ -44,13 +44,12 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
           (l) => Text('error: $l'),
           (_) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: Alignment.center,
                     child: Text('${widget.title}:'),
                   ),
                   const SizedBox(height: 30),
@@ -59,10 +58,12 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
                   DropDownLocation(
                     title: 'Select Province',
                     items: locationToState.provinceData.results
-                        .map((e) => DropdownMenuItem(
-                              value: e.provinceId,
-                              child: Text(e.province),
-                            ))
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e.provinceId,
+                            child: Text(e.province),
+                          ),
+                        )
                         .toList(),
                     onChanged: (p0) {
                       setState(() {
@@ -78,30 +79,33 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
                   ),
                   const SizedBox(height: 20),
                   Visibility(
-                      visible: firstSelect != null,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text('City'),
-                          const SizedBox(height: 10),
-                          DropDownLocation(
-                            title: 'Select City',
-                            items: locationToState.cityData.results
-                                .map((e) => DropdownMenuItem(
-                                      value: e.cityId,
-                                      child: Text(e.cityName),
-                                    ))
-                                .toList(),
-                            onChanged: (p0) {
-                              setState(() {
-                                secondSelect = p0 ?? '1';
-                                widget.funGetCity(p0 ?? '1');
-                              });
-                            },
-                            value: secondSelect,
-                          ),
-                        ],
-                      )),
+                    visible: firstSelect != null,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('City'),
+                        const SizedBox(height: 10),
+                        DropDownLocation(
+                          title: 'Select City',
+                          items: locationToState.cityData.results
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e.cityId,
+                                  child: Text(e.cityName),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (p0) {
+                            setState(() {
+                              secondSelect = p0 ?? '1';
+                              widget.funGetCity(p0 ?? '1');
+                            });
+                          },
+                          value: secondSelect,
+                        ),
+                      ],
+                    ),
+                  ),
                   const SizedBox(height: 10),
                 ],
               ),

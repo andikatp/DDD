@@ -1,6 +1,6 @@
 import 'package:ddd_raja/domain/location/entites/province_data.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'location_req.freezed.dart';
 part 'location_req.g.dart';
