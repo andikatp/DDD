@@ -31,6 +31,24 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
     super.initState();
   }
 
+  void showError(String error) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
+            content: Text(
+              error,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final locationToState = ref.watch(locationControllerProvider);
@@ -41,7 +59,10 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
           : const SizedBox(),
       (t) {
         return t.fold(
-          (l) => Text('error: $l'),
+          (l) {
+            showError(l);
+            return const SizedBox();
+          },
           (_) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
