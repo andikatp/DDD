@@ -20,8 +20,8 @@ LocationReq _$LocationReqFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LocationReq {
-  List<dynamic> get query => throw _privateConstructorUsedError;
-  List<ProvinceData> get results => throw _privateConstructorUsedError;
+  IList<dynamic> get query => throw _privateConstructorUsedError;
+  IList<ProvinceData> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $LocationReqCopyWith<$Res> {
           LocationReq value, $Res Function(LocationReq) then) =
       _$LocationReqCopyWithImpl<$Res, LocationReq>;
   @useResult
-  $Res call({List<dynamic> query, List<ProvinceData> results});
+  $Res call({IList<dynamic> query, IList<ProvinceData> results});
 }
 
 /// @nodoc
@@ -58,11 +58,11 @@ class _$LocationReqCopyWithImpl<$Res, $Val extends LocationReq>
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as IList<dynamic>,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ProvinceData>,
+              as IList<ProvinceData>,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$LocationReqImplCopyWith<$Res>
       __$$LocationReqImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<dynamic> query, List<ProvinceData> results});
+  $Res call({IList<dynamic> query, IList<ProvinceData> results});
 }
 
 /// @nodoc
@@ -94,44 +94,30 @@ class __$$LocationReqImplCopyWithImpl<$Res>
   }) {
     return _then(_$LocationReqImpl(
       query: null == query
-          ? _value._query
+          ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as IList<dynamic>,
       results: null == results
-          ? _value._results
+          ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ProvinceData>,
+              as IList<ProvinceData>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LocationReqImpl with DiagnosticableTreeMixin implements _LocationReq {
-  const _$LocationReqImpl(
-      {required final List<dynamic> query,
-      required final List<ProvinceData> results})
-      : _query = query,
-        _results = results;
+class _$LocationReqImpl extends _LocationReq with DiagnosticableTreeMixin {
+  const _$LocationReqImpl({required this.query, required this.results})
+      : super._();
 
   factory _$LocationReqImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationReqImplFromJson(json);
 
-  final List<dynamic> _query;
   @override
-  List<dynamic> get query {
-    if (_query is EqualUnmodifiableListView) return _query;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_query);
-  }
-
-  final List<ProvinceData> _results;
+  final IList<dynamic> query;
   @override
-  List<ProvinceData> get results {
-    if (_results is EqualUnmodifiableListView) return _results;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
+  final IList<ProvinceData> results;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -152,16 +138,16 @@ class _$LocationReqImpl with DiagnosticableTreeMixin implements _LocationReq {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationReqImpl &&
-            const DeepCollectionEquality().equals(other._query, _query) &&
-            const DeepCollectionEquality().equals(other._results, _results));
+            const DeepCollectionEquality().equals(other.query, query) &&
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_query),
-      const DeepCollectionEquality().hash(_results));
+      const DeepCollectionEquality().hash(query),
+      const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -177,18 +163,19 @@ class _$LocationReqImpl with DiagnosticableTreeMixin implements _LocationReq {
   }
 }
 
-abstract class _LocationReq implements LocationReq {
+abstract class _LocationReq extends LocationReq {
   const factory _LocationReq(
-      {required final List<dynamic> query,
-      required final List<ProvinceData> results}) = _$LocationReqImpl;
+      {required final IList<dynamic> query,
+      required final IList<ProvinceData> results}) = _$LocationReqImpl;
+  const _LocationReq._() : super._();
 
   factory _LocationReq.fromJson(Map<String, dynamic> json) =
       _$LocationReqImpl.fromJson;
 
   @override
-  List<dynamic> get query;
+  IList<dynamic> get query;
   @override
-  List<ProvinceData> get results;
+  IList<ProvinceData> get results;
   @override
   @JsonKey(ignore: true)
   _$$LocationReqImplCopyWith<_$LocationReqImpl> get copyWith =>

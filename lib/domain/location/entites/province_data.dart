@@ -11,6 +11,7 @@ abstract class ProvinceData with _$ProvinceData {
     required final String provinceId,
     required final String province,
   }) = _ProvinceData;
+  const ProvinceData._();
 
   factory ProvinceData.fromJson(Map<String, Object?> json) =>
       _$ProvinceDataFromJson(json);

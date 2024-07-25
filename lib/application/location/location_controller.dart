@@ -1,59 +1,46 @@
-import 'package:ddd_raja/application/location/location_state.dart';
-import 'package:ddd_raja/domain/core/failures.dart';
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
-import 'package:ddd_raja/domain/location/interface/location_interface.dart';
+import 'package:ddd_raja/domain/location/entites/location_req.dart';
+import 'package:ddd_raja/domain/location/entites/price_req.dart';
 import 'package:ddd_raja/insfratucture/location/location_repository.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'location_controller.g.dart';
+part 'location_controller.freezed.dart';
 
 @Riverpod(dependencies: [])
 class LocationController extends _$LocationController {
-  late LocationInterface _interface;
-
   @override
-  LocationState build() {
-    _interface = ref.watch(locationRepositoryProvider);
-    return LocationState.initial();
+  Future<LocationReq> build() {
+    return ref.watch(locationRepositoryProvider).getAllLocationFromRajaOngkir();
+  }
+}
+
+@Riverpod(dependencies: [])
+class CityController extends _$CityController {
+  @override
+  Future<CityReq> build(String id) {
+    return ref.watch(locationRepositoryProvider).getCity(id);
+  }
+}
+
+@Riverpod(dependencies: [])
+class PriceController extends _$PriceController {
+  @override
+  PriceReq build() {
+    return const PriceReq(value: 0);
   }
 
-  Future<void> getLocationProvinceEvent() async {
-    state = state.copyWith(locationFailureOrSuccess: none());
-    final data = await _interface.getAllLocationFromRajaOngkir();
-    data.fold(
-      (l) => state =
-          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
-      (r) => state = state.copyWith(
-        provinceData: r,
-        locationFailureOrSuccess: some(const Right(unit)),
-      ),
-    );
+  Future<void> getPrice(PriceParams params) async {
+    state = await ref.watch(locationRepositoryProvider).getPrice(
+          params.idFrom,
+          params.idTo,
+        );
   }
+}
 
-  Future<void> getLocationCityEvent(String id) async {
-    state = state.copyWith(cityData: const CityReq(results: []));
-    final data = await _interface.getCity(id);
-    data.fold(
-      (l) => state =
-          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
-      (r) => state = state.copyWith(
-        cityData: r,
-        locationFailureOrSuccess: some(const Right(unit)),
-      ),
-    );
-  }
-
-  Future<void> getPriceEvent(String idFrom, String idTo) async {
-    state = state.copyWith(price: 0);
-    final data = await _interface.getPrice(idFrom, idTo);
-    data.fold(
-      (l) => state =
-          state.copyWith(locationFailureOrSuccess: some(Left(l.errorMessage))),
-      (r) => state = state.copyWith(
-        price: r.value,
-        locationFailureOrSuccess: some(const Right(unit)),
-      ),
-    );
-  }
+@freezed
+class PriceParams with _$PriceParams {
+  const factory PriceParams({required String idFrom, required String idTo}) =
+      _PriceParams;
 }
