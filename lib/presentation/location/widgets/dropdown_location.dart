@@ -28,6 +28,8 @@ class DropDownLocation extends StatelessWidget {
           hint: Text(title),
           value: value,
           menuMaxHeight: 300,
+          isExpanded: true,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
         ),
       ),
     );
