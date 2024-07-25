@@ -19,8 +19,6 @@ mixin _$LocationState {
   LocationReq get provinceData => throw _privateConstructorUsedError;
   CityReq get cityData => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  Option<Either<String, Unit>> get locationFailureOrSuccess =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationStateCopyWith<LocationState> get copyWith =>
@@ -33,11 +31,7 @@ abstract class $LocationStateCopyWith<$Res> {
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
   @useResult
-  $Res call(
-      {LocationReq provinceData,
-      CityReq cityData,
-      int price,
-      Option<Either<String, Unit>> locationFailureOrSuccess});
+  $Res call({LocationReq provinceData, CityReq cityData, int price});
 
   $LocationReqCopyWith<$Res> get provinceData;
   $CityReqCopyWith<$Res> get cityData;
@@ -59,7 +53,6 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
     Object? provinceData = null,
     Object? cityData = null,
     Object? price = null,
-    Object? locationFailureOrSuccess = null,
   }) {
     return _then(_value.copyWith(
       provinceData: null == provinceData
@@ -74,10 +67,6 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      locationFailureOrSuccess: null == locationFailureOrSuccess
-          ? _value.locationFailureOrSuccess
-          : locationFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<String, Unit>>,
     ) as $Val);
   }
 
@@ -106,11 +95,7 @@ abstract class _$$LocationStateImplCopyWith<$Res>
       __$$LocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {LocationReq provinceData,
-      CityReq cityData,
-      int price,
-      Option<Either<String, Unit>> locationFailureOrSuccess});
+  $Res call({LocationReq provinceData, CityReq cityData, int price});
 
   @override
   $LocationReqCopyWith<$Res> get provinceData;
@@ -132,7 +117,6 @@ class __$$LocationStateImplCopyWithImpl<$Res>
     Object? provinceData = null,
     Object? cityData = null,
     Object? price = null,
-    Object? locationFailureOrSuccess = null,
   }) {
     return _then(_$LocationStateImpl(
       provinceData: null == provinceData
@@ -147,10 +131,6 @@ class __$$LocationStateImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      locationFailureOrSuccess: null == locationFailureOrSuccess
-          ? _value.locationFailureOrSuccess
-          : locationFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<String, Unit>>,
     ));
   }
 }
@@ -161,8 +141,7 @@ class _$LocationStateImpl implements _LocationState {
   const _$LocationStateImpl(
       {required this.provinceData,
       required this.cityData,
-      required this.price,
-      required this.locationFailureOrSuccess});
+      required this.price});
 
   @override
   final LocationReq provinceData;
@@ -170,12 +149,10 @@ class _$LocationStateImpl implements _LocationState {
   final CityReq cityData;
   @override
   final int price;
-  @override
-  final Option<Either<String, Unit>> locationFailureOrSuccess;
 
   @override
   String toString() {
-    return 'LocationState(provinceData: $provinceData, cityData: $cityData, price: $price, locationFailureOrSuccess: $locationFailureOrSuccess)';
+    return 'LocationState(provinceData: $provinceData, cityData: $cityData, price: $price)';
   }
 
   @override
@@ -187,15 +164,11 @@ class _$LocationStateImpl implements _LocationState {
                 other.provinceData == provinceData) &&
             (identical(other.cityData, cityData) ||
                 other.cityData == cityData) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(
-                    other.locationFailureOrSuccess, locationFailureOrSuccess) ||
-                other.locationFailureOrSuccess == locationFailureOrSuccess));
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, provinceData, cityData, price, locationFailureOrSuccess);
+  int get hashCode => Object.hash(runtimeType, provinceData, cityData, price);
 
   @JsonKey(ignore: true)
   @override
@@ -208,9 +181,7 @@ abstract class _LocationState implements LocationState {
   const factory _LocationState(
       {required final LocationReq provinceData,
       required final CityReq cityData,
-      required final int price,
-      required final Option<Either<String, Unit>>
-          locationFailureOrSuccess}) = _$LocationStateImpl;
+      required final int price}) = _$LocationStateImpl;
 
   @override
   LocationReq get provinceData;
@@ -218,8 +189,6 @@ abstract class _LocationState implements LocationState {
   CityReq get cityData;
   @override
   int get price;
-  @override
-  Option<Either<String, Unit>> get locationFailureOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>

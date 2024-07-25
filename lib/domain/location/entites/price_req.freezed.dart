@@ -95,8 +95,8 @@ class __$$PriceReqImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PriceReqImpl implements _PriceReq {
-  const _$PriceReqImpl({required this.value});
+class _$PriceReqImpl extends _PriceReq {
+  const _$PriceReqImpl({required this.value}) : super._();
 
   factory _$PriceReqImpl.fromJson(Map<String, dynamic> json) =>
       _$$PriceReqImplFromJson(json);
@@ -135,8 +135,9 @@ class _$PriceReqImpl implements _PriceReq {
   }
 }
 
-abstract class _PriceReq implements PriceReq {
+abstract class _PriceReq extends PriceReq {
   const factory _PriceReq({required final int value}) = _$PriceReqImpl;
+  const _PriceReq._() : super._();
 
   factory _PriceReq.fromJson(Map<String, dynamic> json) =
       _$PriceReqImpl.fromJson;

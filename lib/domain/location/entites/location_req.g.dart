@@ -8,14 +8,17 @@ part of 'location_req.dart';
 
 _$LocationReqImpl _$$LocationReqImplFromJson(Map<String, dynamic> json) =>
     _$LocationReqImpl(
-      query: json['query'] as List<dynamic>,
-      results: (json['results'] as List<dynamic>)
-          .map((e) => ProvinceData.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      query: IList<dynamic>.fromJson(json['query'], (value) => value),
+      results: IList<ProvinceData>.fromJson(json['results'],
+          (value) => ProvinceData.fromJson(value as Map<String, dynamic>)),
     );
 
 Map<String, dynamic> _$$LocationReqImplToJson(_$LocationReqImpl instance) =>
     <String, dynamic>{
-      'query': instance.query,
-      'results': instance.results,
+      'query': instance.query.toJson(
+        (value) => value,
+      ),
+      'results': instance.results.toJson(
+        (value) => value,
+      ),
     };

@@ -108,8 +108,9 @@ class __$$ProvinceDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$ProvinceDataImpl with DiagnosticableTreeMixin implements _ProvinceData {
-  const _$ProvinceDataImpl({required this.provinceId, required this.province});
+class _$ProvinceDataImpl extends _ProvinceData with DiagnosticableTreeMixin {
+  const _$ProvinceDataImpl({required this.provinceId, required this.province})
+      : super._();
 
   factory _$ProvinceDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProvinceDataImplFromJson(json);
@@ -162,10 +163,11 @@ class _$ProvinceDataImpl with DiagnosticableTreeMixin implements _ProvinceData {
   }
 }
 
-abstract class _ProvinceData implements ProvinceData {
+abstract class _ProvinceData extends ProvinceData {
   const factory _ProvinceData(
       {required final String provinceId,
       required final String province}) = _$ProvinceDataImpl;
+  const _ProvinceData._() : super._();
 
   factory _ProvinceData.fromJson(Map<String, dynamic> json) =
       _$ProvinceDataImpl.fromJson;

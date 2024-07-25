@@ -8,14 +8,15 @@ part of 'city_req.dart';
 
 _$CityReqImpl _$$CityReqImplFromJson(Map<String, dynamic> json) =>
     _$CityReqImpl(
-      results: (json['results'] as List<dynamic>)
-          .map((e) => ResultsCities.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      results: IList<ResultsCities>.fromJson(json['results'],
+          (value) => ResultsCities.fromJson(value as Map<String, dynamic>)),
     );
 
 Map<String, dynamic> _$$CityReqImplToJson(_$CityReqImpl instance) =>
     <String, dynamic>{
-      'results': instance.results,
+      'results': instance.results.toJson(
+        (value) => value,
+      ),
     };
 
 _$ResultsCitiesImpl _$$ResultsCitiesImplFromJson(Map<String, dynamic> json) =>

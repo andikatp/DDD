@@ -22,15 +22,16 @@ class _LocationPageState extends ConsumerState<LocationPage> {
     setState(() => _isLoading = true);
     if (idKota1 != null && idKota2 != null) {
       await ref
-          .read(locationControllerProvider.notifier)
-          .getPriceEvent(idKota1!, idKota2!);
+          .read(priceControllerProvider.notifier)
+          .getPrice(PriceParams(idFrom: idKota1!, idTo: idKota2!));
     }
     setState(() => _isLoading = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    final locationState = ref.watch(locationControllerProvider);
+    final priceActivity = ref.watch(priceControllerProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Raja Ongkir'),
@@ -41,7 +42,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProviderScope(
-                overrides: [locationControllerProvider],
+                overrides: [locationControllerProvider, cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota1,
                   title: 'From',
@@ -49,7 +50,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
               ),
               const SizedBox(height: 20),
               ProviderScope(
-                overrides: [locationControllerProvider],
+                overrides: [locationControllerProvider, cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota2,
                   title: 'To',
@@ -60,13 +61,13 @@ class _LocationPageState extends ConsumerState<LocationPage> {
               ElevatedButton(
                 onPressed: _isLoading ? null : calculate,
                 child: Text(
-                  locationState.price == 0
+                  priceActivity.value == 0
                       ? _isLoading
                           ? 'Loading...'
                           : 'Hitung'
                       : _isLoading
                           ? 'Loading...'
-                          : '${locationState.price}',
+                          : 'Harga: ${priceActivity.value}',
                 ),
               ),
             ],

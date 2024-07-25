@@ -1,6 +1,6 @@
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:ddd_raja/domain/location/entites/location_req.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'location_state.freezed.dart';
@@ -11,13 +11,11 @@ class LocationState with _$LocationState {
     required LocationReq provinceData,
     required CityReq cityData,
     required int price,
-    required Option<Either<String, Unit>> locationFailureOrSuccess,
   }) = _LocationState;
 
-  factory LocationState.initial() => LocationState(
-        provinceData: const LocationReq(query: [], results: []),
-        cityData: const CityReq(results: []),
-        locationFailureOrSuccess: none(),
+  factory LocationState.initial() => const LocationState(
+        provinceData: LocationReq(query: IList.empty(), results: IList.empty()),
+        cityData: CityReq(results: IList.empty()),
         price: 0,
       );
 }

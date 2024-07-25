@@ -1,3 +1,4 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'city_req.freezed.dart';
@@ -6,8 +7,9 @@ part 'city_req.g.dart';
 @freezed
 class CityReq with _$CityReq {
   const factory CityReq({
-    required final List<ResultsCities> results,
+    required final IList<ResultsCities> results,
   }) = _CityReq;
+  const CityReq._();
 
   factory CityReq.fromJson(Map<String, Object?> json) =>
       _$CityReqFromJson(json);

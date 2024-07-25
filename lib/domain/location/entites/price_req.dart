@@ -9,6 +9,7 @@ class PriceReq with _$PriceReq {
   const factory PriceReq({
     required int value,
   }) = _PriceReq;
+  const PriceReq._();
 
   factory PriceReq.fromJson(Map<String, Object?> json) =>
       _$PriceReqFromJson(json);

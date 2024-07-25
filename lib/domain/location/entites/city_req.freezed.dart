@@ -20,7 +20,7 @@ CityReq _$CityReqFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CityReq {
-  List<ResultsCities> get results => throw _privateConstructorUsedError;
+  IList<ResultsCities> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ abstract class $CityReqCopyWith<$Res> {
   factory $CityReqCopyWith(CityReq value, $Res Function(CityReq) then) =
       _$CityReqCopyWithImpl<$Res, CityReq>;
   @useResult
-  $Res call({List<ResultsCities> results});
+  $Res call({IList<ResultsCities> results});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$CityReqCopyWithImpl<$Res, $Val extends CityReq>
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ResultsCities>,
+              as IList<ResultsCities>,
     ) as $Val);
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$CityReqImplCopyWith<$Res> implements $CityReqCopyWith<$Res> {
       __$$CityReqImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ResultsCities> results});
+  $Res call({IList<ResultsCities> results});
 }
 
 /// @nodoc
@@ -84,29 +84,23 @@ class __$$CityReqImplCopyWithImpl<$Res>
   }) {
     return _then(_$CityReqImpl(
       results: null == results
-          ? _value._results
+          ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ResultsCities>,
+              as IList<ResultsCities>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CityReqImpl implements _CityReq {
-  const _$CityReqImpl({required final List<ResultsCities> results})
-      : _results = results;
+class _$CityReqImpl extends _CityReq {
+  const _$CityReqImpl({required this.results}) : super._();
 
   factory _$CityReqImpl.fromJson(Map<String, dynamic> json) =>
       _$$CityReqImplFromJson(json);
 
-  final List<ResultsCities> _results;
   @override
-  List<ResultsCities> get results {
-    if (_results is EqualUnmodifiableListView) return _results;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
+  final IList<ResultsCities> results;
 
   @override
   String toString() {
@@ -118,13 +112,13 @@ class _$CityReqImpl implements _CityReq {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CityReqImpl &&
-            const DeepCollectionEquality().equals(other._results, _results));
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_results));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -140,14 +134,15 @@ class _$CityReqImpl implements _CityReq {
   }
 }
 
-abstract class _CityReq implements CityReq {
-  const factory _CityReq({required final List<ResultsCities> results}) =
+abstract class _CityReq extends CityReq {
+  const factory _CityReq({required final IList<ResultsCities> results}) =
       _$CityReqImpl;
+  const _CityReq._() : super._();
 
   factory _CityReq.fromJson(Map<String, dynamic> json) = _$CityReqImpl.fromJson;
 
   @override
-  List<ResultsCities> get results;
+  IList<ResultsCities> get results;
   @override
   @JsonKey(ignore: true)
   _$$CityReqImplCopyWith<_$CityReqImpl> get copyWith =>
