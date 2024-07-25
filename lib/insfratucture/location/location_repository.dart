@@ -28,7 +28,7 @@ class LocationRepository extends LocationInterface {
 
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/province',
-        options: Options(headers: {'key': '3de115ce35985e8bd2869247d57810bf'}),
+        options: Options(headers: {'key': ''}),
         cancelToken: cancelToken,
       );
       final result = (response.data as Map<String, dynamic>)['rajaongkir']
@@ -58,7 +58,7 @@ class LocationRepository extends LocationInterface {
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/city',
         queryParameters: {'province': id},
-        options: Options(headers: {'key': '3de115ce35985e8bd2869247d57810bf'}),
+        options: Options(headers: {'key': ''}),
         cancelToken: cancelToken,
       );
       final result = (response.data as Map<String, dynamic>)['rajaongkir']
@@ -94,7 +94,7 @@ class LocationRepository extends LocationInterface {
           'weight': 1000,
           'courier': 'jne',
         },
-        options: Options(headers: {'key': '3de115ce35985e8bd2869247d57810bf'}),
+        options: Options(headers: {'key': ''}),
         cancelToken: cancelToken,
       );
       final rajaOngkir = (response.data as Map<String, dynamic>)['rajaongkir'];
