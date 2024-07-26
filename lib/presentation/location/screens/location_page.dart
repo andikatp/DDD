@@ -42,7 +42,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProviderScope(
-                overrides: [locationControllerProvider, cityControllerProvider],
+                overrides: const [cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota1,
                   title: 'From',
@@ -50,7 +50,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
               ),
               const SizedBox(height: 20),
               ProviderScope(
-                overrides: [locationControllerProvider, cityControllerProvider],
+                overrides: const [cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota2,
                   title: 'To',

@@ -1,4 +1,9 @@
 analyzer:
+  exclude:
+    - '**.freezed.dart'
+    - '**.g.dart'
+    - '**.gr.dart'
+    - '**/generated_plugin_registrant.dart'
   errors:
     avoid_final_parameters: ignore
     invalid_annotation_target: ignore

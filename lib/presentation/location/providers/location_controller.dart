@@ -1,6 +1,7 @@
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:ddd_raja/domain/location/entites/location_req.dart';
 import 'package:ddd_raja/domain/location/entites/price_req.dart';
+import 'package:ddd_raja/insfratucture/core/extension.dart';
 import 'package:ddd_raja/insfratucture/location/location_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -9,10 +10,34 @@ part 'location_controller.g.dart';
 part 'location_controller.freezed.dart';
 
 @Riverpod(dependencies: [])
-class LocationController extends _$LocationController {
-  @override
-  Future<LocationReq> build() {
-    return ref.watch(locationRepositoryProvider).getAllLocationFromRajaOngkir();
+Future<LocationReq> allLocations(AllLocationsRef ref) async {
+  ref.logger();
+  final link = ref.cacheFor();
+  final token = ref.cancelToken();
+  try {
+    final repository = ref.read(locationRepositoryProvider);
+    return await repository.getAllLocationFromRajaOngkir(cancelToken: token);
+  } catch (e) {
+    link.close();
+    rethrow;
+  }
+}
+
+@Riverpod(dependencies: [])
+Future<CityReq> allCityFromProvince(
+  AllCityFromProvinceRef ref,
+  String id,
+) async {
+  ref.logger();
+  final link = ref.cacheFor();
+  final token = ref.cancelToken();
+
+  try {
+    final repository = ref.read(locationRepositoryProvider);
+    return await repository.getCity(id, cancelToken: token);
+  } catch (e) {
+    link.close();
+    rethrow;
   }
 }
 

@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LocationState {
-  LocationReq get provinceData => throw _privateConstructorUsedError;
-  CityReq get cityData => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  LocationReq? get locationReq => throw _privateConstructorUsedError;
+  CityReq? get cityReq => throw _privateConstructorUsedError;
+  PriceReq? get priceReq => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationStateCopyWith<LocationState> get copyWith =>
@@ -31,10 +31,11 @@ abstract class $LocationStateCopyWith<$Res> {
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
   @useResult
-  $Res call({LocationReq provinceData, CityReq cityData, int price});
+  $Res call({LocationReq? locationReq, CityReq? cityReq, PriceReq? priceReq});
 
-  $LocationReqCopyWith<$Res> get provinceData;
-  $CityReqCopyWith<$Res> get cityData;
+  $LocationReqCopyWith<$Res>? get locationReq;
+  $CityReqCopyWith<$Res>? get cityReq;
+  $PriceReqCopyWith<$Res>? get priceReq;
 }
 
 /// @nodoc
@@ -50,39 +51,59 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? provinceData = null,
-    Object? cityData = null,
-    Object? price = null,
+    Object? locationReq = freezed,
+    Object? cityReq = freezed,
+    Object? priceReq = freezed,
   }) {
     return _then(_value.copyWith(
-      provinceData: null == provinceData
-          ? _value.provinceData
-          : provinceData // ignore: cast_nullable_to_non_nullable
-              as LocationReq,
-      cityData: null == cityData
-          ? _value.cityData
-          : cityData // ignore: cast_nullable_to_non_nullable
-              as CityReq,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
+      locationReq: freezed == locationReq
+          ? _value.locationReq
+          : locationReq // ignore: cast_nullable_to_non_nullable
+              as LocationReq?,
+      cityReq: freezed == cityReq
+          ? _value.cityReq
+          : cityReq // ignore: cast_nullable_to_non_nullable
+              as CityReq?,
+      priceReq: freezed == priceReq
+          ? _value.priceReq
+          : priceReq // ignore: cast_nullable_to_non_nullable
+              as PriceReq?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LocationReqCopyWith<$Res> get provinceData {
-    return $LocationReqCopyWith<$Res>(_value.provinceData, (value) {
-      return _then(_value.copyWith(provinceData: value) as $Val);
+  $LocationReqCopyWith<$Res>? get locationReq {
+    if (_value.locationReq == null) {
+      return null;
+    }
+
+    return $LocationReqCopyWith<$Res>(_value.locationReq!, (value) {
+      return _then(_value.copyWith(locationReq: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CityReqCopyWith<$Res> get cityData {
-    return $CityReqCopyWith<$Res>(_value.cityData, (value) {
-      return _then(_value.copyWith(cityData: value) as $Val);
+  $CityReqCopyWith<$Res>? get cityReq {
+    if (_value.cityReq == null) {
+      return null;
+    }
+
+    return $CityReqCopyWith<$Res>(_value.cityReq!, (value) {
+      return _then(_value.copyWith(cityReq: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PriceReqCopyWith<$Res>? get priceReq {
+    if (_value.priceReq == null) {
+      return null;
+    }
+
+    return $PriceReqCopyWith<$Res>(_value.priceReq!, (value) {
+      return _then(_value.copyWith(priceReq: value) as $Val);
     });
   }
 }
@@ -95,12 +116,14 @@ abstract class _$$LocationStateImplCopyWith<$Res>
       __$$LocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocationReq provinceData, CityReq cityData, int price});
+  $Res call({LocationReq? locationReq, CityReq? cityReq, PriceReq? priceReq});
 
   @override
-  $LocationReqCopyWith<$Res> get provinceData;
+  $LocationReqCopyWith<$Res>? get locationReq;
   @override
-  $CityReqCopyWith<$Res> get cityData;
+  $CityReqCopyWith<$Res>? get cityReq;
+  @override
+  $PriceReqCopyWith<$Res>? get priceReq;
 }
 
 /// @nodoc
@@ -114,23 +137,23 @@ class __$$LocationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? provinceData = null,
-    Object? cityData = null,
-    Object? price = null,
+    Object? locationReq = freezed,
+    Object? cityReq = freezed,
+    Object? priceReq = freezed,
   }) {
     return _then(_$LocationStateImpl(
-      provinceData: null == provinceData
-          ? _value.provinceData
-          : provinceData // ignore: cast_nullable_to_non_nullable
-              as LocationReq,
-      cityData: null == cityData
-          ? _value.cityData
-          : cityData // ignore: cast_nullable_to_non_nullable
-              as CityReq,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
+      locationReq: freezed == locationReq
+          ? _value.locationReq
+          : locationReq // ignore: cast_nullable_to_non_nullable
+              as LocationReq?,
+      cityReq: freezed == cityReq
+          ? _value.cityReq
+          : cityReq // ignore: cast_nullable_to_non_nullable
+              as CityReq?,
+      priceReq: freezed == priceReq
+          ? _value.priceReq
+          : priceReq // ignore: cast_nullable_to_non_nullable
+              as PriceReq?,
     ));
   }
 }
@@ -138,21 +161,18 @@ class __$$LocationStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationStateImpl implements _LocationState {
-  const _$LocationStateImpl(
-      {required this.provinceData,
-      required this.cityData,
-      required this.price});
+  const _$LocationStateImpl({this.locationReq, this.cityReq, this.priceReq});
 
   @override
-  final LocationReq provinceData;
+  final LocationReq? locationReq;
   @override
-  final CityReq cityData;
+  final CityReq? cityReq;
   @override
-  final int price;
+  final PriceReq? priceReq;
 
   @override
   String toString() {
-    return 'LocationState(provinceData: $provinceData, cityData: $cityData, price: $price)';
+    return 'LocationState(locationReq: $locationReq, cityReq: $cityReq, priceReq: $priceReq)';
   }
 
   @override
@@ -160,15 +180,15 @@ class _$LocationStateImpl implements _LocationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationStateImpl &&
-            (identical(other.provinceData, provinceData) ||
-                other.provinceData == provinceData) &&
-            (identical(other.cityData, cityData) ||
-                other.cityData == cityData) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.locationReq, locationReq) ||
+                other.locationReq == locationReq) &&
+            (identical(other.cityReq, cityReq) || other.cityReq == cityReq) &&
+            (identical(other.priceReq, priceReq) ||
+                other.priceReq == priceReq));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, provinceData, cityData, price);
+  int get hashCode => Object.hash(runtimeType, locationReq, cityReq, priceReq);
 
   @JsonKey(ignore: true)
   @override
@@ -179,16 +199,16 @@ class _$LocationStateImpl implements _LocationState {
 
 abstract class _LocationState implements LocationState {
   const factory _LocationState(
-      {required final LocationReq provinceData,
-      required final CityReq cityData,
-      required final int price}) = _$LocationStateImpl;
+      {final LocationReq? locationReq,
+      final CityReq? cityReq,
+      final PriceReq? priceReq}) = _$LocationStateImpl;
 
   @override
-  LocationReq get provinceData;
+  LocationReq? get locationReq;
   @override
-  CityReq get cityData;
+  CityReq? get cityReq;
   @override
-  int get price;
+  PriceReq? get priceReq;
   @override
   @JsonKey(ignore: true)
   _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
