@@ -6,6 +6,7 @@ import 'package:ddd_raja/domain/location/entites/location_req.dart';
 import 'package:ddd_raja/domain/location/entites/price_req.dart';
 import 'package:ddd_raja/domain/location/interface/location_interface.dart';
 import 'package:ddd_raja/insfratucture/core/dio_injectable_module.dart';
+import 'package:ddd_raja/insfratucture/core/env.dart';
 import 'package:ddd_raja/insfratucture/core/logger_factory.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -27,7 +28,7 @@ class LocationRepository extends LocationInterface {
 
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/province',
-        options: Options(headers: {'key': ''}),
+        options: Options(headers: {'key': Env.apiKey}),
         cancelToken: cancelToken,
       );
       final result = (response.data as Map<String, dynamic>)['rajaongkir']
@@ -54,7 +55,7 @@ class LocationRepository extends LocationInterface {
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/city',
         queryParameters: {'province': id},
-        options: Options(headers: {'key': ''}),
+        options: Options(headers: {'key': Env.apiKey}),
         cancelToken: cancelToken,
       );
       final result = (response.data as Map<String, dynamic>)['rajaongkir']
@@ -88,7 +89,7 @@ class LocationRepository extends LocationInterface {
           'weight': 1000,
           'courier': 'jne',
         },
-        options: Options(headers: {'key': ''}),
+        options: Options(headers: {'key': Env.apiKey}),
         cancelToken: cancelToken,
       );
       final rajaOngkir = (response.data as Map<String, dynamic>)['rajaongkir'];

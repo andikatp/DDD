@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../fixture/fixture_reader.dart';
-import 'core/container_provider.dart';
+import '../core/container_provider.dart';
 
 class MockDio extends Mock implements Dio {}
 
