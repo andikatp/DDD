@@ -1,0 +1,21 @@
+{
+	"rajaongkir": {
+		"query": {
+			"province": ""
+		},
+		"status": {
+			"code": 0,
+			"description": ""
+		},
+		"results": [
+			{
+				"city_id": "",
+				"province_id": "",
+				"province": "",
+				"type": "",
+				"city_name": "",
+				"postal_code": ""
+			}
+		]
+	}
+}
