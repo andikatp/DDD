@@ -11,6 +11,8 @@ class CityReq with _$CityReq {
   }) = _CityReq;
   const CityReq._();
 
+  factory CityReq.empty() => CityReq(results: IList([ResultsCities.empty()]));
+
   factory CityReq.fromJson(Map<String, Object?> json) =>
       _$CityReqFromJson(json);
 }
@@ -29,4 +31,13 @@ class ResultsCities with _$ResultsCities {
 
   factory ResultsCities.fromJson(Map<String, Object?> json) =>
       _$ResultsCitiesFromJson(json);
+
+  factory ResultsCities.empty() => const ResultsCities(
+        cityId: '',
+        provinceId: '',
+        province: '',
+        type: '',
+        cityName: '',
+        postalCode: '',
+      );
 }
