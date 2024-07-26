@@ -1,0 +1,50 @@
+{
+	"rajaongkir": {
+		"query": {
+			"origin": "",
+			"destination": "",
+			"weight": 0,
+			"courier": ""
+		},
+		"status": {
+			"code": 0,
+			"description": ""
+		},
+		"origin_details": {
+			"city_id": "",
+			"province_id": "",
+			"province": "",
+			"type": "",
+			"city_name": "",
+			"postal_code": ""
+		},
+		"destination_details": {
+			"city_id": "",
+			"province_id": "",
+			"province": "",
+			"type": "",
+			"city_name": "",
+			"postal_code": ""
+		},
+		"results": [
+			{
+				"code": "",
+				"name": "",
+				"costs": [
+					{
+						"service": "",
+						"description": "",
+						"cost": [
+							{
+								"value": 0,
+								"etd": "",
+								"note": ""
+							}
+						]
+					}
+					
+				]
+			}
+		]
+	}
+}

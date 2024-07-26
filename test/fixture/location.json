@@ -1,0 +1,16 @@
+{
+	"rajaongkir": {
+		"query": [],
+		"status": {
+			"code": 0,
+			"description": ""
+		},
+		"results": [
+			{
+				"province_id": "",
+				"province": ""
+			}
+			
+		]
+	}
+}

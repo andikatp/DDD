@@ -15,4 +15,9 @@ abstract class ProvinceData with _$ProvinceData {
 
   factory ProvinceData.fromJson(Map<String, Object?> json) =>
       _$ProvinceDataFromJson(json);
+
+  factory ProvinceData.empty() => const ProvinceData(
+        provinceId: '',
+        province: '',
+      );
 }

@@ -13,4 +13,6 @@ class PriceReq with _$PriceReq {
 
   factory PriceReq.fromJson(Map<String, Object?> json) =>
       _$PriceReqFromJson(json);
+
+  factory PriceReq.empty() => const PriceReq(value: 0);
 }
