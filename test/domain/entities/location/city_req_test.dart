@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:ddd_raja/domain/location/entites/city_req.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../fixture/fixture_reader.dart';
+import '../../../fixture/fixture_reader.dart';
 
 void main() {
   late CityReq tCity;
