@@ -6,7 +6,6 @@ import 'package:ddd_raja/domain/location/entites/location_req.dart';
 import 'package:ddd_raja/domain/location/entites/price_req.dart';
 import 'package:ddd_raja/domain/location/interface/location_interface.dart';
 import 'package:ddd_raja/insfratucture/core/dio_injectable_module.dart';
-import 'package:ddd_raja/insfratucture/core/extension.dart';
 import 'package:ddd_raja/insfratucture/core/logger_factory.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -51,10 +50,7 @@ class LocationRepository extends LocationInterface {
     CancelToken? cancelToken,
   }) async {
     try {
-      log(
-        'Fetching city with id: $id from RajaOngkir',
-        name: 'LocationRepository.getCity',
-      );
+      _log.i('Fetching city with id: $id from RajaOngkir');
       final response = await _dio.get<dynamic>(
         'https://api.rajaongkir.com/starter/city',
         queryParameters: {'province': id},
@@ -82,10 +78,8 @@ class LocationRepository extends LocationInterface {
     CancelToken? cancelToken,
   }) async {
     try {
-      log(
-        'Fetching price from $idFrom to $idTo from RajaOngkir',
-        name: 'LocationRepository.getPrice',
-      );
+      _log.i('Fetching price from $idFrom to $idTo from RajaOngkir');
+
       final response = await _dio.post<dynamic>(
         'https://api.rajaongkir.com/starter/cost',
         data: {
@@ -124,60 +118,3 @@ LocationRepository locationRepository(LocationRepositoryRef ref) {
   final dio = ref.watch(dioProvider);
   return LocationRepository(dio);
 }
-
-final allLocationsProvider = FutureProvider.autoDispose<LocationReq>(
-  (ref) async {
-    ref.logger();
-    final link = ref.cacheFor();
-    final token = ref.cancelToken();
-
-    try {
-      final repository = ref.read(locationRepositoryProvider);
-      return await repository.getAllLocationFromRajaOngkir(cancelToken: token);
-    } catch (e) {
-      link.close();
-      rethrow;
-    }
-  },
-  dependencies: [locationRepositoryProvider],
-);
-
-// final cityProvider =
-//     FutureProvider.autoDispose.family<Either<Failure, CityReq>, String>(
-//   (ref, id) async {
-//     ref.logger();
-//     final link = ref.cacheFor();
-//     final token = ref.cancelToken();
-
-//     try {
-//       final repository = ref.read(locationRepositoryProvider);
-//       return await repository.getCity(id, cancelToken: token);
-//     } catch (e) {
-//       link.close();
-//       rethrow;
-//     }
-//   },
-//   dependencies: [locationRepositoryProvider],
-// );
-
-// final priceProvider = FutureProvider.autoDispose
-//     .family<Either<Failure, PriceReq>, Map<String, String>>(
-//   (ref, params) async {
-//     ref.logger();
-//     final link = ref.cacheFor();
-//     final token = ref.cancelToken();
-
-//     try {
-//       final repository = ref.read(locationRepositoryProvider);
-//       return await repository.getPrice(
-//         params['idFrom']!,
-//         params['idTo']!,
-//         cancelToken: token,
-//       );
-//     } catch (e) {
-//       link.close();
-//       rethrow;
-//     }
-//   },
-//   dependencies: [locationRepositoryProvider],
-// );

@@ -6,24 +6,22 @@ part of 'location_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$locationControllerHash() =>
-    r'793da579450ad89673a407fe6eb56a66626c3067';
+String _$allLocationsHash() => r'bb66458c07f147990d5bafea314995283ad6c1b4';
 
-/// See also [LocationController].
-@ProviderFor(LocationController)
-final locationControllerProvider =
-    AutoDisposeAsyncNotifierProvider<LocationController, LocationReq>.internal(
-  LocationController.new,
-  name: r'locationControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$locationControllerHash,
+/// See also [allLocations].
+@ProviderFor(allLocations)
+final allLocationsProvider = AutoDisposeFutureProvider<LocationReq>.internal(
+  allLocations,
+  name: r'allLocationsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$allLocationsHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
-typedef _$LocationController = AutoDisposeAsyncNotifier<LocationReq>;
-String _$cityControllerHash() => r'cbd92e9b70aed51131ec19e2bb4fdde7e1ad4792';
+typedef AllLocationsRef = AutoDisposeFutureProviderRef<LocationReq>;
+String _$allCityFromProvinceHash() =>
+    r'12e286f9d1f738c904752b1469546355e1312cf3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,6 +43,137 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [allCityFromProvince].
+@ProviderFor(allCityFromProvince)
+const allCityFromProvinceProvider = AllCityFromProvinceFamily();
+
+/// See also [allCityFromProvince].
+class AllCityFromProvinceFamily extends Family<AsyncValue<CityReq>> {
+  /// See also [allCityFromProvince].
+  const AllCityFromProvinceFamily();
+
+  /// See also [allCityFromProvince].
+  AllCityFromProvinceProvider call(
+    String id,
+  ) {
+    return AllCityFromProvinceProvider(
+      id,
+    );
+  }
+
+  @override
+  AllCityFromProvinceProvider getProviderOverride(
+    covariant AllCityFromProvinceProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static final Iterable<ProviderOrFamily> _dependencies =
+      const <ProviderOrFamily>[];
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
+      const <ProviderOrFamily>{};
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'allCityFromProvinceProvider';
+}
+
+/// See also [allCityFromProvince].
+class AllCityFromProvinceProvider extends AutoDisposeFutureProvider<CityReq> {
+  /// See also [allCityFromProvince].
+  AllCityFromProvinceProvider(
+    String id,
+  ) : this._internal(
+          (ref) => allCityFromProvince(
+            ref as AllCityFromProvinceRef,
+            id,
+          ),
+          from: allCityFromProvinceProvider,
+          name: r'allCityFromProvinceProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$allCityFromProvinceHash,
+          dependencies: AllCityFromProvinceFamily._dependencies,
+          allTransitiveDependencies:
+              AllCityFromProvinceFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  AllCityFromProvinceProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<CityReq> Function(AllCityFromProvinceRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: AllCityFromProvinceProvider._internal(
+        (ref) => create(ref as AllCityFromProvinceRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<CityReq> createElement() {
+    return _AllCityFromProvinceProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is AllCityFromProvinceProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin AllCityFromProvinceRef on AutoDisposeFutureProviderRef<CityReq> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _AllCityFromProvinceProviderElement
+    extends AutoDisposeFutureProviderElement<CityReq>
+    with AllCityFromProvinceRef {
+  _AllCityFromProvinceProviderElement(super.provider);
+
+  @override
+  String get id => (origin as AllCityFromProvinceProvider).id;
+}
+
+String _$cityControllerHash() => r'cbd92e9b70aed51131ec19e2bb4fdde7e1ad4792';
 
 abstract class _$CityController
     extends BuildlessAutoDisposeAsyncNotifier<CityReq> {
