@@ -130,8 +130,15 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
           ],
         ),
       ),
-      error: (error, stackTrace) =>
-          const Text('Oops, something unexpected happened'),
+      error: (error, stackTrace) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $error'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return const Text('Oops, something unexpected happened');
+      },
       loading: () => widget.showLoading
           ? const Center(
               child: CircularProgressIndicator(),

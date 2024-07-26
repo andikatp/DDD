@@ -20,7 +20,6 @@ LocationReq _$LocationReqFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LocationReq {
-  IList<dynamic> get query => throw _privateConstructorUsedError;
   IList<ProvinceData> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $LocationReqCopyWith<$Res> {
           LocationReq value, $Res Function(LocationReq) then) =
       _$LocationReqCopyWithImpl<$Res, LocationReq>;
   @useResult
-  $Res call({IList<dynamic> query, IList<ProvinceData> results});
+  $Res call({IList<ProvinceData> results});
 }
 
 /// @nodoc
@@ -51,14 +50,9 @@ class _$LocationReqCopyWithImpl<$Res, $Val extends LocationReq>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? query = null,
     Object? results = null,
   }) {
     return _then(_value.copyWith(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as IList<dynamic>,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$LocationReqImplCopyWith<$Res>
       __$$LocationReqImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({IList<dynamic> query, IList<ProvinceData> results});
+  $Res call({IList<ProvinceData> results});
 }
 
 /// @nodoc
@@ -89,14 +83,9 @@ class __$$LocationReqImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? query = null,
     Object? results = null,
   }) {
     return _then(_$LocationReqImpl(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as IList<dynamic>,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -108,20 +97,17 @@ class __$$LocationReqImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LocationReqImpl extends _LocationReq with DiagnosticableTreeMixin {
-  const _$LocationReqImpl({required this.query, required this.results})
-      : super._();
+  const _$LocationReqImpl({required this.results}) : super._();
 
   factory _$LocationReqImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationReqImplFromJson(json);
 
   @override
-  final IList<dynamic> query;
-  @override
   final IList<ProvinceData> results;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LocationReq(query: $query, results: $results)';
+    return 'LocationReq(results: $results)';
   }
 
   @override
@@ -129,7 +115,6 @@ class _$LocationReqImpl extends _LocationReq with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'LocationReq'))
-      ..add(DiagnosticsProperty('query', query))
       ..add(DiagnosticsProperty('results', results));
   }
 
@@ -138,16 +123,13 @@ class _$LocationReqImpl extends _LocationReq with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationReqImpl &&
-            const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality().equals(other.results, results));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(query),
-      const DeepCollectionEquality().hash(results));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
@@ -164,16 +146,13 @@ class _$LocationReqImpl extends _LocationReq with DiagnosticableTreeMixin {
 }
 
 abstract class _LocationReq extends LocationReq {
-  const factory _LocationReq(
-      {required final IList<dynamic> query,
-      required final IList<ProvinceData> results}) = _$LocationReqImpl;
+  const factory _LocationReq({required final IList<ProvinceData> results}) =
+      _$LocationReqImpl;
   const _LocationReq._() : super._();
 
   factory _LocationReq.fromJson(Map<String, dynamic> json) =
       _$LocationReqImpl.fromJson;
 
-  @override
-  IList<dynamic> get query;
   @override
   IList<ProvinceData> get results;
   @override

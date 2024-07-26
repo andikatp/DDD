@@ -16,7 +16,7 @@ class LocationRepository extends LocationInterface {
   LocationRepository(this._dio);
   final Dio _dio;
 
-  static final _log = LoggerFactory.logger('StreetLampRemoteRepositoryMock');
+  static final _log = LoggerFactory.logger('LocationRepository');
 
   @override
   Future<LocationReq> getAllLocationFromRajaOngkir({
