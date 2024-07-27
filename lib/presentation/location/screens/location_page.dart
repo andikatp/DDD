@@ -22,7 +22,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
     setState(() => _isLoading = true);
     if (idKota1 != null && idKota2 != null) {
       await ref
-          .read(priceControllerProvider.notifier)
+          .read(priceFromTwoCitiesProvider.notifier)
           .getPrice(PriceParams(idFrom: idKota1!, idTo: idKota2!));
     }
     setState(() => _isLoading = false);
@@ -30,7 +30,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
 
   @override
   Widget build(BuildContext context) {
-    final priceActivity = ref.watch(priceControllerProvider);
+    final priceActivity = ref.watch(priceFromTwoCitiesProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +42,6 @@ class _LocationPageState extends ConsumerState<LocationPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ProviderScope(
-                overrides: const [cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota1,
                   title: 'From',
@@ -50,7 +49,6 @@ class _LocationPageState extends ConsumerState<LocationPage> {
               ),
               const SizedBox(height: 20),
               ProviderScope(
-                overrides: const [cityControllerProvider],
                 child: SelectLocation(
                   funGetCity: getIdKota2,
                   title: 'To',
