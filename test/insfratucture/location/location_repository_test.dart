@@ -32,7 +32,7 @@ void main() {
 
   group(
     'LocationRepository',
-    () async {
+    () {
       test(
         'should fetch all location from RajaOngkir ',
         () async {
