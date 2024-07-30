@@ -48,8 +48,6 @@ class _ToWidgetState extends ConsumerState<SelectLocation> {
 
   @override
   Widget build(BuildContext context) {
-    // final activity = ref.watch(locationControllerProvider);
-
     final asyncLocation = ref.watch(allLocationsProvider);
 
     return asyncLocation.when(
