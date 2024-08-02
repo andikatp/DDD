@@ -99,9 +99,15 @@ class LocationRepository extends LocationInterface {
           result.map((e) => e as Map<String, dynamic>).toList();
       final costs = resultsReorder[0]['costs'] as List<dynamic>;
       final costsReorder = costs.map((e) => e as Map<String, dynamic>).toList();
-      final cost = costsReorder[0]['cost'] as List<dynamic>;
-      final costReorder = cost.map((e) => e as Map<String, dynamic>).toList();
-      return PriceReq.fromJson(costReorder[0]);
+      final cost = costsReorder.isEmpty
+          ? <dynamic>[]
+          : costsReorder[0]['cost'] as List<dynamic>;
+      final costReorder = cost.isEmpty
+          ? <Map<String, dynamic>>[]
+          : cost.map((e) => e as Map<String, dynamic>).toList();
+      return PriceReq.fromJson(
+        costReorder.isEmpty ? {'value': 0} : costReorder[0],
+      );
     } on DioException catch (e) {
       if (e.type == DioExceptionType.cancel) {
         log(

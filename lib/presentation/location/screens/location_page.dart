@@ -38,6 +38,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
       ),
       body: Center(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -62,7 +63,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
                   priceActivity.value == 0
                       ? _isLoading
                           ? 'Loading...'
-                          : 'Hitung'
+                          : 'Harga: 0'
                       : _isLoading
                           ? 'Loading...'
                           : 'Harga: ${priceActivity.value}',
